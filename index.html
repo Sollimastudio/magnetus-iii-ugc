@@ -1,1 +1,320 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MAGNETUS III</title><style>*{box-sizing:border-box;margin:0;padding:0}body{min-height:100vh;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,rgba(214,178,103,.32),transparent 34%),radial-gradient(circle at bottom left,rgba(198,77,124,.2),transparent 34%),radial-gradient(circle at bottom right,rgba(57,101,201,.22),transparent 34%),#050508;color:#f7efe3;display:flex;align-items:center;justify-content:center;padding:18px;overflow-x:hidden}.card{width:100%;max-width:460px;text-align:center;padding:16px 14px 22px;border:1px solid rgba(214,178,103,.24);border-radius:34px;background:rgba(8,8,12,.82);box-shadow:0 24px 90px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06)}.hero-img{width:100%;max-width:390px;display:block;margin:0 auto 18px;border-radius:26px;box-shadow:0 18px 60px rgba(0,0,0,.55);border:1px solid rgba(214,178,103,.28)}.eyebrow{color:#d6b267;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;margin-bottom:10px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(32px,8vw,44px);line-height:.98;letter-spacing:-.04em;margin-bottom:12px}p{color:rgba(247,239,227,.72);font-size:15px;line-height:1.5;max-width:340px;margin:0 auto 18px}.question{font-size:20px;font-weight:800;margin-bottom:14px}.actions{display:grid;gap:12px}a{text-decoration:none;color:#f7efe3;min-height:64px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;letter-spacing:.02em;border:1px solid rgba(255,255,255,.1)}.homem{background:linear-gradient(135deg,rgba(64,114,222,.34),rgba(214,178,103,.1))}.mulher{background:linear-gradient(135deg,rgba(218,79,133,.34),rgba(214,178,103,.12))}.footer{margin-top:18px;color:rgba(247,239,227,.34);font-size:11px;letter-spacing:.18em;text-transform:uppercase}</style></head><body><main class="card"><img class="hero-img" src="/magnetus-hero.webp" alt="MAGNETUS III - Protocolos para Mulheres e Homens"><div class="eyebrow">MAGNETUS III</div><h1>Qual protocolo foi feito para você?</h1><p>Para ir direto ao acesso certo, escolha abaixo:</p><div class="question">Você é homem ou mulher?</div><div class="actions"><a class="homem" href="https://magnetus-homens.vercel.app">Homem</a><a class="mulher" href="https://magnetus-Sales-page.vercel.app">Mulher</a></div><div class="footer">Sol Lima · Relacione-se</div></main><script type="module">import BubbleChat from 'https://agent-factory-chat.hostgator.io/scripts/start-chat.js';const hashId='f81131ff-f7c9-4a11-a476-9a508b80c054';const bubbleChat=new BubbleChat(hashId,'prod');bubbleChat.open();</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGNETUS III</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        color-scheme: dark;
+        --ink: oklch(95% 0.018 82);
+        --muted: oklch(83% 0.032 82 / 0.72);
+        --gold: oklch(78% 0.12 82);
+        --gold-soft: oklch(78% 0.12 82 / 0.24);
+        --shadow: oklch(9% 0.016 292 / 0.72);
+        --edge: oklch(95% 0.018 82 / 0.16);
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: oklch(12% 0.026 292);
+        color: var(--ink);
+        overflow-x: hidden;
+      }
+
+      .split {
+        min-height: 100svh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        isolation: isolate;
+      }
+
+      .choice {
+        position: relative;
+        min-height: 100svh;
+        display: grid;
+        align-content: space-between;
+        justify-items: center;
+        padding: clamp(28px, 6vw, 58px) clamp(18px, 4vw, 52px);
+        overflow: hidden;
+        border: 0;
+      }
+
+      .choice + .choice {
+        border-left: 1px solid oklch(95% 0.018 82 / 0.2);
+      }
+
+      .choice::before,
+      .choice::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .choice::before {
+        background:
+          linear-gradient(180deg, oklch(8% 0.02 292 / 0.4), transparent 28%, oklch(8% 0.02 292 / 0.76)),
+          radial-gradient(circle at 50% 16%, var(--accent-glow), transparent 34%);
+      }
+
+      .choice::after {
+        opacity: 0;
+        background: radial-gradient(circle at 50% 72%, var(--accent-glow), transparent 44%);
+        transform: scale(0.92);
+        transition: opacity 560ms cubic-bezier(.16, 1, .3, 1), transform 560ms cubic-bezier(.16, 1, .3, 1);
+      }
+
+      .choice:hover::after,
+      .choice:focus-within::after,
+      .choice.is-playing::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .choice--homem {
+        --accent: oklch(66% 0.16 250);
+        --accent-glow: oklch(66% 0.16 250 / 0.34);
+      }
+
+      .choice--mulher {
+        --accent: oklch(68% 0.18 12);
+        --accent-glow: oklch(68% 0.18 12 / 0.32);
+      }
+
+      video {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.96) contrast(1.04) brightness(0.78);
+        transform: scale(1.01);
+        transition: filter 620ms cubic-bezier(.16, 1, .3, 1), transform 620ms cubic-bezier(.16, 1, .3, 1);
+      }
+
+      .choice:hover video,
+      .choice:focus-within video,
+      .choice.is-playing video {
+        filter: saturate(1.08) contrast(1.08) brightness(0.9);
+        transform: scale(1.045);
+      }
+
+      .label {
+        position: relative;
+        width: min(100%, 420px);
+        padding-top: clamp(8px, 2vh, 20px);
+        text-align: center;
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        font-size: clamp(10px, 1vw, 12px);
+        font-weight: 800;
+        letter-spacing: .24em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(44px, 9vw, 118px);
+        font-weight: 700;
+        line-height: .9;
+        letter-spacing: 0;
+        text-shadow: 0 16px 46px var(--shadow);
+      }
+
+      .action {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        min-width: min(100%, 258px);
+        min-height: 62px;
+        padding: 0 24px;
+        color: var(--ink);
+        text-decoration: none;
+        font-size: clamp(16px, 2vw, 20px);
+        font-weight: 900;
+        letter-spacing: .02em;
+        border: 1px solid var(--edge);
+        border-radius: 999px;
+        background:
+          linear-gradient(135deg, oklch(95% 0.018 82 / 0.16), oklch(95% 0.018 82 / 0.06)),
+          oklch(12% 0.026 292 / 0.56);
+        box-shadow: 0 22px 54px oklch(6% 0.018 292 / 0.4), inset 0 1px 0 oklch(95% 0.018 82 / 0.16);
+        backdrop-filter: blur(12px);
+        transform: translateY(0);
+        transition:
+          background 320ms cubic-bezier(.16, 1, .3, 1),
+          border-color 320ms cubic-bezier(.16, 1, .3, 1),
+          box-shadow 320ms cubic-bezier(.16, 1, .3, 1),
+          transform 320ms cubic-bezier(.16, 1, .3, 1);
+      }
+
+      .action:hover,
+      .action:focus-visible {
+        background:
+          linear-gradient(135deg, oklch(95% 0.018 82 / 0.2), oklch(95% 0.018 82 / 0.08)),
+          color-mix(in oklch, var(--accent) 20%, oklch(12% 0.026 292));
+        border-color: var(--gold-soft);
+        box-shadow: 0 28px 68px oklch(6% 0.018 292 / 0.5), 0 0 0 6px color-mix(in oklch, var(--accent) 18%, transparent);
+        transform: translateY(-4px);
+        outline: 0;
+      }
+
+      .action:active {
+        transform: translateY(-1px) scale(0.99);
+      }
+
+      .arrow {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: oklch(15% 0.026 82);
+        transition: transform 320ms cubic-bezier(.16, 1, .3, 1), background 320ms cubic-bezier(.16, 1, .3, 1);
+      }
+
+      .action:hover .arrow,
+      .action:focus-visible .arrow {
+        background: var(--ink);
+        transform: translateX(4px);
+      }
+
+      .arrow svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 2.7;
+      }
+
+      @media (max-width: 760px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .choice {
+          min-height: 50svh;
+          padding: 24px 18px;
+        }
+
+        .choice + .choice {
+          border-left: 0;
+          border-top: 1px solid oklch(95% 0.018 82 / 0.2);
+        }
+
+        h1 {
+          font-size: clamp(42px, 16vw, 74px);
+        }
+
+        .action {
+          min-height: 56px;
+          min-width: min(100%, 224px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="split" aria-label="Escolha seu protocolo MAGNETUS III">
+      <section class="choice choice--homem" data-video-panel>
+        <video src="Man_drinks_wine,_women_watch_202607120117.mp4" muted playsinline loop preload="metadata" aria-label="Homem"></video>
+        <div class="label">
+          <div class="eyebrow">MAGNETUS III</div>
+          <h1>Homem</h1>
+        </div>
+        <a class="action" href="https://magnetus-homens.vercel.app" aria-label="Ir para o protocolo Homem">
+          Acessar
+          <span class="arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </span>
+        </a>
+      </section>
+
+      <section class="choice choice--mulher" data-video-panel>
+        <video src="Woman_walking_with_men_1080p_202607120117.mp4" muted playsinline loop preload="metadata" aria-label="Mulher"></video>
+        <div class="label">
+          <div class="eyebrow">MAGNETUS III</div>
+          <h1>Mulher</h1>
+        </div>
+        <a class="action" href="https://magnetus-Sales-page.vercel.app" aria-label="Ir para o protocolo Mulher">
+          Acessar
+          <span class="arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </span>
+        </a>
+      </section>
+    </main>
+
+    <script>
+      const panels = document.querySelectorAll('[data-video-panel]');
+
+      panels.forEach((panel) => {
+        const video = panel.querySelector('video');
+
+        const play = () => {
+          panel.classList.add('is-playing');
+          video.play().catch(() => {
+            panel.classList.remove('is-playing');
+          });
+        };
+
+        const pause = () => {
+          panel.classList.remove('is-playing');
+          video.pause();
+        };
+
+        panel.addEventListener('pointerenter', (event) => {
+          if (event.pointerType === 'mouse') play();
+        });
+
+        panel.addEventListener('pointerleave', (event) => {
+          if (event.pointerType === 'mouse') pause();
+        });
+
+        panel.addEventListener('pointerdown', (event) => {
+          if (event.target.closest('a')) return;
+          play();
+        });
+
+        panel.addEventListener('focusin', play);
+        panel.addEventListener('focusout', pause);
+      });
+    </script>
+    <script type="module">
+      import BubbleChat from 'https://agent-factory-chat.hostgator.io/scripts/start-chat.js';
+
+      const hashId = 'f81131ff-f7c9-4a11-a476-9a508b80c054';
+      const bubbleChat = new BubbleChat(hashId, 'prod');
+      bubbleChat.open();
+    </script>
+  </body>
+</html>
